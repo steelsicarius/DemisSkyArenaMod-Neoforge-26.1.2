@@ -1,0 +1,36 @@
+modLoader="javafml"
+loaderVersion="[11,)"
+license="MIT"
+
+[[mods]]
+modId="skyarena"
+version="1.3.6-26.1.2"
+displayName="Sky Arena"
+authors="JrDemiurge"
+description='''Accept the challenge.'''
+logoFile="Sky Arena.png"
+
+# 26.1.2 port fix (bugs: no mobs + no protection zones):
+# FML 11.0.15 (ModFileParser) only reads a TOP-LEVEL `mixins` list of tables,
+# each with a `config` key. The previous declaration `mixins = [{...}]` nested
+# inside [[mods]] was parsed as `mods.mixins` and silently ignored, so the mixin
+# config never loaded: MobLootTableAccessor was not applied to Mob
+# (ClassCastException in AltarBlock#spawnArenaMob -> no mobs ever spawned) and
+# LevelMixin was not applied to Level (protection zones did not block
+# setBlock/destroyBlock). Declared here with the canonical [[mixins]] form.
+[[mixins]]
+config="skyarena.mixins.json"
+
+[[dependencies.skyarena]]
+    modId="neoforge"
+    type="required"
+    versionRange="[26.1.2.114,)"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.skyarena]]
+    modId="minecraft"
+    type="required"
+    versionRange="[26.1.2,26.2)"
+    ordering="NONE"
+    side="BOTH"

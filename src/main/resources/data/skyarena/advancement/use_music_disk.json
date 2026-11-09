@@ -1,0 +1,30 @@
+{
+  "parent": "skyarena:use_altar_battle",
+  "display": {
+    "icon": {
+      "id": "minecraft:music_disc_pigstep"
+    },
+    "title": {
+      "translate": "advancement.skyarena.use_music_disk.title"
+    },
+    "description": {
+      "translate": "advancement.skyarena.use_music_disk.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "use_music_disk": {
+      "trigger": "skyarena:use_music_disk",
+      "conditions": {
+      }
+    }
+  },
+  "requirements": [
+    [
+      "use_music_disk"
+    ]
+  ]
+}

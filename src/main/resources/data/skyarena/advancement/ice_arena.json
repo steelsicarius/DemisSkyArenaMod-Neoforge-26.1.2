@@ -1,0 +1,35 @@
+{
+  "parent": "skyarena:root",
+  "display": {
+    "icon": {
+      "id": "minecraft:packed_ice"
+    },
+    "title": {
+      "translate": "advancement.skyarena.ice_arena.title"
+    },
+    "description": {
+      "translate": "advancement.skyarena.ice_arena.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "common": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "player": {
+          "location": {
+            "structures": "skyarena:ice_arena"
+          }
+        }
+      }
+    }
+  },
+  "requirements": [
+    [
+      "common"
+    ]
+  ]
+}

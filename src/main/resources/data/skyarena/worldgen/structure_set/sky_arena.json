@@ -1,0 +1,24 @@
+{
+  
+  
+  "structures": [
+    {
+      "structure": "skyarena:sky_arena",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    
+    "salt": 1644986321,
+
+    
+    "spacing": 75,
+
+    
+    
+    "separation": 50,
+
+    
+    "type": "minecraft:random_spread"
+  }
+}

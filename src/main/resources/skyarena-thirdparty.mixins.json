@@ -1,0 +1,29 @@
+{
+  "required": false,
+  "minVersion": "0.8",
+  "package": "net.jrdemiurge.skyarena.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "injectors": {
+    "defaultRequire": 0
+  },
+  "mixins": [
+    "AncientRemnantEntityMixin",
+    "BonescallerEntityMixin",
+    "DireHoundLeaderEntityMixin",
+    "EnderGuardianEntityMixin",
+    "EntityCorpseWarlockMixin",
+    "EntityGulingSentinelHeavyMixin",
+    "KillRewarderMixin",
+    "MaledictusEntityMixin",
+    "MotherSpiderEntityMixin",
+    "NetheriteMonstrosityEntityMixin",
+    "ScyllaEntityMixin",
+    "SiameseSkeletonsEntityMixin",
+    "SiameseSkeletonsleftEntityMixin",
+    "SiameseSkeletonsrightEntityMixin",
+    "SpiritGuideEntityMixin",
+    "SupremeBonescallerEntityMixin",
+    "TheHarbingerEntityMixin",
+    "VizierMixin"
+  ]
+}

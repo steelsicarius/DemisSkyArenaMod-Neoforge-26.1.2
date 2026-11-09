@@ -1,0 +1,9 @@
+{
+  "environment": "minecraft:default",
+  "structure": "skyarena:arena_test_platform",
+  "max_ticks": 400,
+  "setup_ticks": 20,
+  "required": true,
+  "type": "minecraft:function",
+  "function": "skyarena:dynamic_mob_pool"
+}

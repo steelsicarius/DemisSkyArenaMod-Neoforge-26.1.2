@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "CBC",
+    "BAB",
+    "CBC"
+  ],
+  "key": {
+    "A": "minecraft:ender_eye",
+    "B": "minecraft:snow_block",
+    "C": "minecraft:packed_ice"
+  },
+  "result": {
+    "id": "skyarena:ice_eye",
+    "count": 1
+  }
+}

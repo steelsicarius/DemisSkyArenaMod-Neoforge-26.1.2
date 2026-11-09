@@ -1,0 +1,101 @@
+plugins {
+    id 'java-library'
+    id 'net.neoforged.moddev' version '2.0.148'
+}
+
+base {
+    archivesName = "SkyArena"
+}
+
+version = project.mod_version
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(25)
+    }
+}
+
+neoForge {
+    // One single enable() call: it creates the version settings, and calling
+    // setVersion on the extension itself would re-trigger enable().
+    enable {
+        version = project.neo_version
+
+        // The low-RAM build sandbox cannot run the Vineflower decompiler of the
+        // NeoForm pipeline (it loads the whole Minecraft classpath and needs >3GB).
+        // disableRecompilation makes MDG use the binary pipeline instead:
+        //   downloadClient/Server -> preProcessJar -> binaryPatch -> copyUnpatchedClasses
+        //   -> applyDevTransforms  =>  gameJarNoRecompWithNeoForge
+        // which yields a real, binary-patched Mojmap game jar used both to compile
+        // against and to run the game. See PORTING.md, decision DEC-4.
+        disableRecompilation = true
+    }
+
+    runs {
+        client {
+            client()
+            gameDirectory = file('run')
+            jvmArgument '-Xmx2400m'
+            // Optional singleplayer auto-join for automated visual verification:
+            //   gradle runClient -Pquickplay -Pquickworld=portcheck
+            if (project.hasProperty('quickplay')) {
+                programArguments.addAll '--quickPlaySingleplayer',
+                        (project.findProperty('quickworld') ?: 'portcheck').toString()
+            }
+        }
+        server {
+            server()
+            gameDirectory = file('run')
+            programArgument '--nogui'
+            jvmArgument '-Xmx1800m'
+        }
+        gameTestServer {
+            type = "gameTestServer"
+            gameDirectory = file('run-gametest')
+            programArgument '--nogui'
+            jvmArgument '-Xmx1800m'
+            systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id
+        }
+        data {
+            data()
+            gameDirectory = file('run')
+            programArguments.addAll '--mod', project.mod_id,
+                    '--all',
+                    '--output', file('src/generated/resources/').toString(),
+                    '--existing', file('src/main/resources/').toString()
+        }
+    }
+
+    mods {
+        "${mod_id}" {
+            sourceSet(sourceSets.main)
+        }
+    }
+}
+
+// Keep the NFRT cache inside the project workspace so it can be reused.
+tasks.withType(net.neoforged.nfrtgradle.NeoFormRuntimeTask).configureEach {
+    homeDirectory = layout.projectDir.dir("../build-tmp/nfrt-home")
+    workDirectory = layout.projectDir.dir("../build-tmp/nfrt-work")
+}
+
+neoFormRuntime {
+    // Keep verbose output so step results are visible in build logs.
+    verbose = true
+}
+
+// neoforge.mods.toml is a plain resource with literal values (no Groovy
+// expand needed: this port has a fixed identity).
+
+tasks.named('jar', Jar).configure {
+    manifest {
+        attributes([
+                'Specification-Title'   : mod_id,
+                'Specification-Vendor'  : mod_authors,
+                'Specification-Version' : '1',
+                'Implementation-Title'  : project.name,
+                'Implementation-Version': project.jar.archiveVersion,
+                'Implementation-Vendor' : mod_authors
+        ])
+    }
+}

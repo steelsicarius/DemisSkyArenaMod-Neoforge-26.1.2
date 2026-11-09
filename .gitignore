@@ -1,0 +1,11 @@
+# Artefactos de build y ejecución
+build/
+run/
+.gradle/
+out/
+
+# IDEs
+.idea/
+*.iml
+.vscode/
+run-gametest/

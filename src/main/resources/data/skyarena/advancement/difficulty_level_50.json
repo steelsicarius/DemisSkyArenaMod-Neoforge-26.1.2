@@ -1,0 +1,35 @@
+{
+  "parent": "skyarena:difficulty_level_20",
+  "display": {
+    "icon": {
+      "id": "skyarena:diamond_trophy"
+    },
+    "title": {
+      "translate": "advancement.skyarena.difficulty_level_50.title"
+    },
+    "description": {
+      "translate": "advancement.skyarena.difficulty_level_50.description"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "difficulty_level_50": {
+      "trigger": "skyarena:difficulty_level_50",
+      "conditions": {
+      }
+    }
+  },
+  "requirements": [
+    [
+      "difficulty_level_50"
+    ]
+  ],
+  "rewards": {
+    "loot": [
+      "skyarena:advancement_rewards/diamond_trophy"
+    ]
+  }
+}

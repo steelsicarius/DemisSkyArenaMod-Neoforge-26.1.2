@@ -1,0 +1,35 @@
+{
+  "parent": "skyarena:difficulty_level_50",
+  "display": {
+    "icon": {
+      "id": "skyarena:netherite_trophy"
+    },
+    "title": {
+      "translate": "advancement.skyarena.difficulty_level_100.title"
+    },
+    "description": {
+      "translate": "advancement.skyarena.difficulty_level_100.description"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "difficulty_level_100": {
+      "trigger": "skyarena:difficulty_level_100",
+      "conditions": {
+      }
+    }
+  },
+  "requirements": [
+    [
+      "difficulty_level_100"
+    ]
+  ],
+  "rewards": {
+    "loot": [
+      "skyarena:advancement_rewards/netherite_trophy"
+    ]
+  }
+}

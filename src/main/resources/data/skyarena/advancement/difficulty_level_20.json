@@ -1,0 +1,35 @@
+{
+  "parent": "skyarena:difficulty_level_10",
+  "display": {
+    "icon": {
+      "id": "skyarena:gold_trophy"
+    },
+    "title": {
+      "translate": "advancement.skyarena.difficulty_level_20.title"
+    },
+    "description": {
+      "translate": "advancement.skyarena.difficulty_level_20.description"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "difficulty_level_20": {
+      "trigger": "skyarena:difficulty_level_20",
+      "conditions": {
+      }
+    }
+  },
+  "requirements": [
+    [
+      "difficulty_level_20"
+    ]
+  ],
+  "rewards": {
+    "loot": [
+      "skyarena:advancement_rewards/gold_trophy"
+    ]
+  }
+}
